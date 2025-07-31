@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast App</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-top: 50px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #ffeaa7;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: #00b894;
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,184,148,0.3);
+        }
+
+        .btn-primary:hover {
+            background: #00a085;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,184,148,0.4);
+        }
+
+        .weather-preview {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 40px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .weather-preview h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .preview-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+        }
+
+        .preview-item i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #ffeaa7;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1rem;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .feature-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-cloud-sun"></i> Weather Forecast</h1>
+            <p>Your reliable companion for weather information</p>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-thermometer-half"></i>
+                </div>
+                <h3>Current Weather</h3>
+                <p>Get real-time weather conditions including temperature, humidity, wind speed, and atmospheric pressure for any city worldwide.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-calendar-week"></i>
+                </div>
+                <h3>5-Day Forecast</h3>
+                <p>Plan ahead with detailed 5-day weather forecasts showing daily temperature ranges and weather conditions.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3>Global Coverage</h3>
+                <p>Search for weather information in thousands of cities around the world with accurate and up-to-date data.</p>
+            </div>
+        </div>
+
+        <div class="weather-preview">
+            <h3>Weather Information Includes</h3>
+            <div class="preview-grid">
+                <div class="preview-item">
+                    <i class="fas fa-temperature-high"></i>
+                    <h4>Temperature</h4>
+                    <p>Current & Feels Like</p>
+                </div>
+                <div class="preview-item">
+                    <i class="fas fa-tint"></i>
+                    <h4>Humidity</h4>
+                    <p>Moisture Levels</p>
+                </div>
+                <div class="preview-item">
+                    <i class="fas fa-wind"></i>
+                    <h4>Wind Speed</h4>
+                    <p>Air Movement</p>
+                </div>
+                <div class="preview-item">
+                    <i class="fas fa-eye"></i>
+                    <h4>Visibility</h4>
+                    <p>Clear Distance</p>
+                </div>
+                <div class="preview-item">
+                    <i class="fas fa-sun"></i>
+                    <h4>Sunrise/Sunset</h4>
+                    <p>Day/Night Cycle</p>
+                </div>
+                <div class="preview-item">
+                    <i class="fas fa-compress-arrows-alt"></i>
+                    <h4>Pressure</h4>
+                    <p>Atmospheric Data</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <a href="/weather" class="btn-primary">
+                <i class="fas fa-search"></i> Check Weather Now
+            </a>
+        </div>
+    </div>
+</body>
+</html>
